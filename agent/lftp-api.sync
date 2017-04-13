@@ -1,0 +1,7 @@
+set ftps:initial-prot ""
+set ftp:ssl-force true
+set ftp:ssl-protect-data true
+open YOUR_HOSTNAME.ftp.azurewebsites.windows.net
+user YOUR_USER_NAME YOUR_PASSWORD
+mirror --reverse --delete --verbose ./src/Api/bin/Release/netcoreapp1.1/publish/ /site/wwwroot
+exit 0

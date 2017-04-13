@@ -1,0 +1,44 @@
+version: '2'
+
+services:
+  server:
+    container_name: teamcity_server
+    restart: unless-stopped
+    image: jetbrains/teamcity-server
+    ports:
+      - "0.0.0.0:8111:8111"
+    environment:
+      TEAMCITY_SERVER_MEM_OPTS: "-Xmx2g -XX:MaxPermSize=270m -XX:ReservedCodeCacheSize=350m"
+    volumes:
+      - "${HOME}/data/datadir:/data/teamcity_server/datadir"
+      - "${HOME}/data/logs:/opt/teamcity/logs"
+
+  db:
+    container_name: teamcity_mssql
+    restart: unless-stopped
+    image: microsoft/mssql-server-linux
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Q8J3q1VCeja1jx"
+    volumes:
+      - "${HOME}/data/mssql:/var/opt/mssql"
+
+  agent_1:
+    container_name: teamcity_agent_1  
+    restart: unless-stopped
+    #    image: jetbrains/teamcity-agent
+    build: agent
+    depends_on:
+        - server
+        - db
+    environment:
+      SERVER_URL: http://server:8111
+      MSSQL_URL: db,1433
+      AGENT_NAME: agent_1
+      ACCEPT_EULA: "Y"
+    volumes:
+      - "${HOME}/data/agent1:/data/teamcity_agent/conf"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
