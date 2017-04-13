@@ -12,9 +12,9 @@ This assumes you are on a Linux machine that is running Docker.
 later):
 
 ```
-agent/lftp-api.sync
-agent/lftp-front.sync
-agent/swap.sh
+[agent/lftp-api.sync](https://github.com/mikebridge/teamcity-dotnet-react-config/blob/master/agent/lftp-api.sync)
+[agent/lftp-front.sync](https://github.com/mikebridge/teamcity-dotnet-react-config/blob/master/agent/lftp-front.sync)
+[agent/swap.sh](https://github.com/mikebridge/teamcity-dotnet-react-config/blob/master/agent/swap.sh)
 ```
 
 2) Create a directory on your Docker host to hold the working data for all
@@ -57,6 +57,6 @@ The docker teamcity agent is fairly heavy.  I added several things on top of the
 - [lftp](https://lftp.yar.ru/) to deploy via SFTP to Azure
 - The [azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) tools to help deploy the site
 - [mssql-tools](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools) to access SQL Server.
-
+- Several [supporting libraries and applications](https://github.com/mikebridge/teamcity-dotnet-react-config/blob/master/agent/Dockerfile)
 
 
