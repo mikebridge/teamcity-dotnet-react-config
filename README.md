@@ -11,11 +11,9 @@ This assumes you are on a Linux machine that is running Docker.
 1) Edit each of these files with your Azure configuration (or do it
 later):
 
-```
 [agent/lftp-api.sync](https://github.com/mikebridge/teamcity-dotnet-react-config/blob/master/agent/lftp-api.sync)
 [agent/lftp-front.sync](https://github.com/mikebridge/teamcity-dotnet-react-config/blob/master/agent/lftp-front.sync)
 [agent/swap.sh](https://github.com/mikebridge/teamcity-dotnet-react-config/blob/master/agent/swap.sh)
-```
 
 2) Create a directory on your Docker host to hold the working data for all
 three containers.
