@@ -19,7 +19,7 @@ later):
 three containers.
 
 ```sh
-$ mkdir $HOME/data
+$ mkdir ~/data
 ```
 
 Then build & run the whole thing:
@@ -27,14 +27,17 @@ Then build & run the whole thing:
 ```sh
 $ docker-compose up
 ```
-
 And navigate to the teamcity URL at [http://localhost:8111](http://localhost:8111).
+
+If you intend to host your TeamCity data on Azure SQL or SQL Server, you will need to download the [SQL Server JDBC Driver](https://www.microsoft.com/en-us/download/details.aspx?id=54671).  Once TeamCity has booted up, you can copy the `sqljdbc42.jar` file to your host's `~/data/datadir/lib/jdbc` directory.
+
+You should also download the [TeamCity DotNet Plugin](https://plugins.jetbrains.com/plugin/9190--net-core-support).  You can upload this to TeamCity later (this requires a server restart).
 
 ## Notes
 
-This uses the official TeamCity docker images for [teamcity-server](https://hub.docker.com/r/jetbrains/teamcity-server/) and [teamcity-agent](https://hub.docker.com/r/jetbrains/teamcity-agent/), as well as the official [Microsoft MSSQL server on Linux](https://hub.docker.com/r/microsoft/mssql-server-linux/)
+This uses the official TeamCity docker images for [teamcity-server](https://hub.docker.com/r/jetbrains/teamcity-server/) and [teamcity-agent](https://hub.docker.com/r/jetbrains/teamcity-agent/), as well as the official [Microsoft MSSQL server on Linux](https://hub.docker.com/r/microsoft/mssql-server-linux/) image.
 
-_I can't believe I just typed that._
+_I can't believe I just typed that last part._
 
 I didn't tie these images to any particular image version.  When a new version
 comes out, you can pull the new image and rebuild the instance, e.g.
